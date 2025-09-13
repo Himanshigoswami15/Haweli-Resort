@@ -96,26 +96,43 @@
         transition: all 0.3s ease;
       }
 
-      /* --- Menu Item Card Hover Filigree --- */
+      /* --- Menu Item Card Hover Corner Ornaments --- */
       .menu-card-hover-effect {
         position: relative;
       }
       .menu-card-hover-effect::after {
         content: '';
         position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        border: 1px solid #D4AF37;
-        border-radius: 2px;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
+        
+        /* Create L-shaped corners using multiple linear gradients */
+        background:
+            /* Top-left corner */
+            linear-gradient(to right, #D4AF37 2px, transparent 2px) 0 0,
+            linear-gradient(to bottom, #D4AF37 2px, transparent 2px) 0 0,
+            /* Top-right corner */
+            linear-gradient(to left, #D4AF37 2px, transparent 2px) 100% 0,
+            linear-gradient(to bottom, #D4AF37 2px, transparent 2px) 100% 0,
+            /* Bottom-left corner */
+            linear-gradient(to right, #D4AF37 2px, transparent 2px) 0 100%,
+            linear-gradient(to top, #D4AF37 2px, transparent 2px) 0 100%,
+            /* Bottom-right corner */
+            linear-gradient(to left, #D4AF37 2px, transparent 2px) 100% 100%,
+            linear-gradient(to top, #D4AF37 2px, transparent 2px) 100% 100%;
+            
+        background-repeat: no-repeat;
+        background-size: 20px 20px; /* Size of the corner design */
+        
         opacity: 0;
-        transition: opacity 0.4s ease-in-out;
+        transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
         pointer-events: none;
-        transform: scale(0.95);
+        transform: scale(0.98);
       }
       .menu-card-hover-effect:hover::after {
-        opacity: 0.7;
+        opacity: 0.8;
         transform: scale(1);
       }
       

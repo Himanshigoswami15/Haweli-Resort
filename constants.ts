@@ -136,7 +136,7 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Shahi Tukda",
         description: "Crispy fried bread soaked in thickened, sweetened milk, garnished with nuts and saffron.",
         price: "₹400",
-        imageUrl: "https://picsum.photos/seed/decadent_shahi_tukda_dessert/400/400"
+        imageUrl: "a8297be1-e235-4361-819f-ffc2cb3c637a"
       },
       {
         name: "Moong Dal Halwa",

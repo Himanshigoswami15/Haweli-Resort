@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { MenuItem } from './MenuItem';
 import type { Dish } from '../types';
@@ -10,7 +9,7 @@ interface MenuSectionProps {
 
 export const MenuSection: React.FC<MenuSectionProps> = ({ title, items }) => {
   return (
-    <section>
+    <section className="mt-16">
       <h2 className="font-cinzel text-3xl md:text-4xl text-center font-bold text-yellow-400 mb-10 gold-text-shadow ornament-border">
         {title}
       </h2>

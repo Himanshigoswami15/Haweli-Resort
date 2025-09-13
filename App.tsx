@@ -1,9 +1,20 @@
 import React from 'react';
 import { MenuSection } from './components/MenuSection';
 import { Header } from './components/Header';
+import { Quote } from './components/Quote';
 import { MENU_DATA } from './constants';
 
 const App: React.FC = () => {
+  // Helper to find category data by title for manual ordering
+  const getCategory = (title: string) => MENU_DATA.find(cat => cat.title === title);
+
+  const starters = getCategory("Starters & Snacks");
+  const fastFood = getCategory("Fast Food");
+  const mainCourse = getCategory("Main Course");
+  const breads = getCategory("Indian Breads");
+  const desserts = getCategory("Desserts & Sweets");
+  const beverages = getCategory("Beverages & Mocktails");
+
   return (
     <div 
       className="min-h-screen w-full bg-cover bg-center bg-fixed"
@@ -12,10 +23,24 @@ const App: React.FC = () => {
       <div className="min-h-screen w-full bg-[#2a1a0f]/70 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <Header />
-          <main className="space-y-16">
-            {MENU_DATA.map((category) => (
-              <MenuSection key={category.title} title={category.title} items={category.items} />
-            ))}
+          <main>
+            {starters && <MenuSection key={starters.title} {...starters} />}
+            
+            <Quote text="अतिथि देवो भव" />
+
+            {fastFood && <MenuSection key={fastFood.title} {...fastFood} />}
+            
+            {mainCourse && <MenuSection key={mainCourse.title} {...mainCourse} />}
+            
+            <Quote text="पधारो म्हारे देस" />
+            
+            {breads && <MenuSection key={breads.title} {...breads} />}
+            
+            {desserts && <MenuSection key={desserts.title} {...desserts} />}
+
+            <Quote text="जीमो सा" />
+            
+            {beverages && <MenuSection key={beverages.title} {...beverages} />}
           </main>
           <footer className="text-center py-12 mt-12">
              <p className="font-cinzel text-sm text-yellow-600/70 tracking-widest mb-6">A Royal Culinary Journey</p>

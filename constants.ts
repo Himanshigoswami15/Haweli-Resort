@@ -136,13 +136,13 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Shahi Tukda",
         description: "Crispy fried bread soaked in thickened, sweetened milk, garnished with nuts and saffron.",
         price: "₹400",
-        imageUrl: "a8297be1-e235-4361-819f-ffc2cb3c637a"
+        imageUrl: "https://picsum.photos/seed/royal_shahi_tukda_dessert/400/400"
       },
       {
         name: "Moong Dal Halwa",
         description: "A rich and decadent dessert made with yellow lentils, ghee, and sugar, slow-cooked to perfection.",
         price: "₹350",
-        const imageUrl: string = "https://i.imgur.com/xyz123.jpg"
+        imageUrl: "https://picsum.photos/seed/rich_moong_dal_halwa/400/400"
       }
     ]
   },
@@ -153,7 +153,7 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Royal Rose Lassi",
         description: "A refreshing yogurt-based drink flavored with rose syrup and topped with pistachios.",
         price: "₹300",
-        imageUrl: "https://i.imgur.com/xyz123.jpg"
+        imageUrl: "https://picsum.photos/seed/creamy_rose_lassi_drink/400/400"
       },
       {
         name: "Jaipur Sunset",

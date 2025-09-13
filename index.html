@@ -24,19 +24,27 @@
         text-shadow: 0px 2px 4px rgba(212, 175, 55, 0.3);
       }
       
-      /* --- Ornate Page Border --- */
-      #root::before {
+      /* --- Header Ornaments --- */
+      .header-ornament {
+        position: relative;
+      }
+      .header-ornament::before,
+      .header-ornament::after {
         content: '';
-        position: fixed;
-        top: 15px;
-        left: 15px;
-        right: 15px;
-        bottom: 15px;
-        border: 2px solid #D4AF37;
-        border-radius: 5px;
-        pointer-events: none;
-        z-index: 1000;
-        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.3);
+        position: absolute;
+        top: 50%;
+        width: 100px; /* Adjust width of the flourish */
+        height: 2px;
+        background: linear-gradient(to right, transparent, #D4AF37);
+        opacity: 0.7;
+      }
+      .header-ornament::before {
+        left: 15%; /* Position from left */
+        transform: translateY(-50%);
+      }
+      .header-ornament::after {
+        right: 15%; /* Position from right */
+        transform: translateY(-50%) scaleX(-1); /* Flip horizontally */
       }
       
       /* --- Enhanced Section Ornament --- */
@@ -65,6 +73,46 @@
         font-size: 1.4rem;
         letter-spacing: 1rem;
         text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+      }
+
+      /* --- Footer Ornament --- */
+      footer {
+        position: relative;
+        padding-top: 2rem;
+      }
+       footer::before {
+        content: '⬥ ⚜ ⬥';
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #D4AF37;
+        opacity: 0.6;
+        font-size: 1.2rem;
+        letter-spacing: 0.75rem;
+      }
+
+      /* --- Menu Item Card Hover Filigree --- */
+      .menu-card-hover-effect {
+        position: relative;
+      }
+      .menu-card-hover-effect::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        border: 1px solid #D4AF37;
+        border-radius: 2px;
+        opacity: 0;
+        transition: opacity 0.4s ease-in-out;
+        pointer-events: none;
+        transform: scale(0.95);
+      }
+      .menu-card-hover-effect:hover::after {
+        opacity: 0.7;
+        transform: scale(1);
       }
       
       /* --- Custom Themed Scrollbar --- */

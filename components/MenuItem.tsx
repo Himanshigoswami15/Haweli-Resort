@@ -3,7 +3,7 @@ import type { Dish } from '../types';
 
 export const MenuItem: React.FC<Dish> = ({ name, description, price, imageUrl }) => {
   return (
-    <div className="bg-gradient-to-br from-[#4a2c1a]/60 to-[#2a1a0f]/80 backdrop-blur-sm border border-amber-800/50 rounded-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-500/70 hover:scale-105 transform group">
+    <div className="bg-gradient-to-br from-[#4a2c1a]/60 to-[#2a1a0f]/80 backdrop-blur-sm border border-amber-800/50 rounded-lg overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-500/70 hover:scale-105 transform group menu-card-hover-effect">
       <div className="relative overflow-hidden">
         <img 
             src={imageUrl} 

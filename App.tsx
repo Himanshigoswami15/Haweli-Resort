@@ -17,7 +17,7 @@ const App: React.FC = () => {
               <MenuSection key={category.title} title={category.title} items={category.items} />
             ))}
           </main>
-          <footer className="text-center py-12 mt-12 border-t-2 border-yellow-600/20">
+          <footer className="text-center py-12 mt-12">
              <p className="font-cinzel text-sm text-yellow-600/70 tracking-widest">A Royal Culinary Journey</p>
           </footer>
         </div>

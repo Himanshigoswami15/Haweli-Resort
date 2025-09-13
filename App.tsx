@@ -21,7 +21,7 @@ const App: React.FC = () => {
       style={{ backgroundImage: "url('https://images.unsplash.com/photo-1603215284992-d7c719c8f070?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')" }}
     >
       <div className="min-h-screen w-full bg-[#2a1a0f]/70 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Header />
           <main>
             <Quote text="अतिथि देवो भव" />
@@ -38,7 +38,7 @@ const App: React.FC = () => {
             
             {beverages && <MenuSection key={beverages.title} {...beverages} />}
           </main>
-          <footer className="text-center py-12 mt-12">
+          <footer className="text-center py-8 mt-8">
              <p className="font-cinzel text-sm text-yellow-600/70 tracking-widest mb-6">A Royal Culinary Journey</p>
              <div className="flex items-center justify-center gap-6">
                 <a 

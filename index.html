@@ -33,18 +33,19 @@
         content: '';
         position: absolute;
         top: 50%;
-        width: 100px; /* Adjust width of the flourish */
+        width: 100px;
         height: 2px;
         background: linear-gradient(to right, transparent, #D4AF37);
         opacity: 0.7;
+        transition: all 0.3s ease;
       }
       .header-ornament::before {
-        left: 15%; /* Position from left */
+        left: 15%;
         transform: translateY(-50%);
       }
       .header-ornament::after {
-        right: 15%; /* Position from right */
-        transform: translateY(-50%) scaleX(-1); /* Flip horizontally */
+        right: 15%;
+        transform: translateY(-50%) scaleX(-1);
       }
       
       /* --- Enhanced Section Ornament --- */
@@ -58,13 +59,14 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 250px;
+        width: 80%; /* Changed to percentage */
+        max-width: 250px; /* Added max-width */
         height: 2px;
         background: linear-gradient(90deg, transparent, #D4AF37, transparent);
         opacity: 0.8;
       }
       .ornament-border::before {
-        content: '⚜ ⬥ ⚜'; /* Fleur-de-lis ornament */
+        content: '⚜ ⬥ ⚜';
         position: absolute;
         bottom: -12px;
         left: 50%;
@@ -73,6 +75,7 @@
         font-size: 1.4rem;
         letter-spacing: 1rem;
         text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+        transition: all 0.3s ease;
       }
 
       /* --- Footer Ornament --- */
@@ -90,6 +93,7 @@
         opacity: 0.6;
         font-size: 1.2rem;
         letter-spacing: 0.75rem;
+        transition: all 0.3s ease;
       }
 
       /* --- Menu Item Card Hover Filigree --- */
@@ -129,6 +133,26 @@
       }
       ::-webkit-scrollbar-thumb:hover {
         background: #f0e68c;
+      }
+
+      /* --- Mobile Responsive Styles --- */
+      @media (max-width: 640px) {
+        .header-ornament::before {
+          width: 60px;
+          left: 2%;
+        }
+        .header-ornament::after {
+          width: 60px;
+          right: 2%;
+        }
+        .ornament-border::before {
+          font-size: 1.2rem;
+          letter-spacing: 0.75rem;
+        }
+        footer::before {
+          font-size: 1rem;
+          letter-spacing: 0.5rem;
+        }
       }
     </style>
   <script type="importmap">

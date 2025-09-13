@@ -18,9 +18,9 @@ const App: React.FC = () => {
   return (
     <div 
       className="min-h-screen w-full bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1617592933483-655511233632?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}
+      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1632223595238-c19c33de9c6a?q=80&w=2574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}
     >
-      <div className="relative min-h-screen w-full bg-[#2a1a0f]/60 backdrop-blur-sm haweli-bg-container">
+      <div className="relative min-h-screen w-full bg-[#2a1a0f]/50 backdrop-blur-sm haweli-bg-container">
         <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Header />
           <main>

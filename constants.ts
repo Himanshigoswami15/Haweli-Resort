@@ -142,8 +142,7 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Moong Dal Halwa",
         description: "A rich and decadent dessert made with yellow lentils, ghee, and sugar, slow-cooked to perfection.",
         price: "₹350",
-        imageUrl: "https://i.imgur.com/xyz123.jpg
-"
+        imageUrl: "https://i.imgur.com/xyz123.jpg"
       }
     ]
   },
@@ -154,7 +153,7 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Royal Rose Lassi",
         description: "A refreshing yogurt-based drink flavored with rose syrup and topped with pistachios.",
         price: "₹300",
-        imageUrl: "https://picsum.photos/seed/refreshing_rose_lassi_drink/400/400"
+        imageUrl: "https://i.imgur.com/xyz123.jpg"
       },
       {
         name: "Jaipur Sunset",

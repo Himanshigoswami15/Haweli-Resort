@@ -8,7 +8,7 @@ const App: React.FC = () => {
   return (
     <div 
       className="min-h-screen w-full bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/dark-floral.png')" }}
+      style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/otis-redding.png')" }}
     >
       <div className="min-h-screen w-full bg-black/60 backdrop-blur-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">

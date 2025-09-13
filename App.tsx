@@ -18,10 +18,10 @@ const App: React.FC = () => {
   return (
     <div 
       className="min-h-screen w-full bg-cover bg-center bg-fixed"
-      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1603215284992-d7c719c8f070?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80')" }}
+      style={{ backgroundImage: "url('https://images.unsplash.com/photo-1617592933483-655511233632?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')" }}
     >
-      <div className="min-h-screen w-full bg-[#2a1a0f]/70 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="relative min-h-screen w-full bg-[#2a1a0f]/60 backdrop-blur-sm haweli-bg-container">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Header />
           <main>
             <Quote text="अतिथि देवो भव" />

@@ -3,7 +3,8 @@ export interface Dish {
   name: string;
   description: string;
   price: string;
-  imageUrl: string;
+  imageUrl?: string;
+  isHighlight?: boolean;
 }
 
 export interface MenuCategory {

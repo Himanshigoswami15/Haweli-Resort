@@ -24,21 +24,17 @@ const App: React.FC = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <Header />
           <main>
-            {starters && <MenuSection key={starters.title} {...starters} />}
-            
             <Quote text="अतिथि देवो भव" />
 
+            {starters && <MenuSection key={starters.title} {...starters} />}
+            
             {fastFood && <MenuSection key={fastFood.title} {...fastFood} />}
             
             {mainCourse && <MenuSection key={mainCourse.title} {...mainCourse} />}
             
-            <Quote text="पधारो म्हारे देस" />
-            
             {breads && <MenuSection key={breads.title} {...breads} />}
             
             {desserts && <MenuSection key={desserts.title} {...desserts} />}
-
-            <Quote text="जीमो सा" />
             
             {beverages && <MenuSection key={beverages.title} {...beverages} />}
           </main>

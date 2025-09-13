@@ -142,7 +142,8 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Moong Dal Halwa",
         description: "A rich and decadent dessert made with yellow lentils, ghee, and sugar, slow-cooked to perfection.",
         price: "₹350",
-        imageUrl: "https://picsum.photos/seed/rich_moong_dal_halwa/400/400"
+        imageUrl: "https://i.imgur.com/xyz123.jpg
+"
       }
     ]
   },

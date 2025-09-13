@@ -8,7 +8,7 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Rajwada Paneer Tikka",
         description: "Cottage cheese marinated in royal spices and yogurt, grilled to perfection in a tandoor.",
         price: "₹450",
-        imageUrl: "https://picsum.photos/seed/grilled_paneer_tikka_skewers/400/400"
+        imageUrl: "https://ik.imagekit.io/j1fgksdwx/Curd-and-Yogurt-1-768x512.jpg?updatedAt=1757778358127"
       },
       {
         name: "Dahi Ke Kebab",

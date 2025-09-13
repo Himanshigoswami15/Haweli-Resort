@@ -12,7 +12,7 @@
     <style>
       body {
         font-family: 'Lora', serif;
-        background-color: #4a2c1a; /* Richer, darker brown for a Haweli feel */
+        background-image: radial-gradient(circle, #5a3c2a, #2a1a0f);
       }
       .font-cinzel {
         font-family: 'Cinzel', serif;
@@ -23,6 +23,23 @@
       .gold-text-shadow {
         text-shadow: 0px 2px 4px rgba(212, 175, 55, 0.3);
       }
+      
+      /* --- Ornate Page Border --- */
+      #root::before {
+        content: '';
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border: 2px solid #D4AF37;
+        border-radius: 5px;
+        pointer-events: none;
+        z-index: 1000;
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(212, 175, 55, 0.3);
+      }
+      
+      /* --- Enhanced Section Ornament --- */
       .ornament-border {
         position: relative;
         padding-bottom: 1.5rem;
@@ -33,19 +50,37 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        width: 120px;
+        width: 250px;
         height: 2px;
         background: linear-gradient(90deg, transparent, #D4AF37, transparent);
         opacity: 0.8;
       }
       .ornament-border::before {
-        content: '⬥'; /* Diamond shape */
+        content: '⚜ ⬥ ⚜'; /* Fleur-de-lis ornament */
         position: absolute;
-        bottom: -9px; /* Adjust position */
+        bottom: -12px;
         left: 50%;
         transform: translateX(-50%);
         color: #D4AF37;
-        font-size: 1.2rem;
+        font-size: 1.4rem;
+        letter-spacing: 1rem;
+        text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+      }
+      
+      /* --- Custom Themed Scrollbar --- */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #2a1a0f;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #D4AF37;
+        border-radius: 5px;
+        border: 2px solid #2a1a0f;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #f0e68c;
       }
     </style>
   <script type="importmap">

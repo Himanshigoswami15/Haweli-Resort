@@ -4,7 +4,7 @@ import type { Dish } from '../types';
 export const MenuItem: React.FC<Dish> = ({ name, description, price, isHighlight }) => {
   const cardClasses = [
     "h-full flex flex-col justify-center",
-    "bg-gradient-to-br from-[#1f3a6e]/60 to-[#0d1526]/80",
+    "bg-gradient-to-br from-[#611a15]/60 to-[#2b0808]/80",
     "backdrop-blur-sm border border-amber-800/50 rounded-lg",
     "transition-all duration-300 ease-in-out",
     "hover:shadow-2xl hover:shadow-amber-500/20 hover:border-amber-500/70 hover:scale-105 transform",

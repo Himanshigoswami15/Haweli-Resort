@@ -13,16 +13,6 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Dahi Ke Kebab",
         description: "Exquisite, melt-in-the-mouth kebabs made from hung curd and delicate spices.",
         price: "₹400",
-      },
-      {
-        name: "Murg Malai Tikka",
-        description: "Creamy chicken tikka, marinated in cheese, cream, and cashew paste, with a hint of cardamom.",
-        price: "₹550",
-      },
-      {
-        name: "Shikampuri Lamb Kebab",
-        description: "Minced lamb patties with a surprise yogurt and mint filling, pan-fried to a golden brown.",
-        price: "₹650",
       }
     ]
   },
@@ -38,11 +28,6 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Samosa Chaat",
         description: "Crushed samosas topped with yogurt, tamarind chutney, and sev. A burst of flavors.",
         price: "₹250",
-      },
-      {
-        name: "Chicken 65",
-        description: "Spicy, deep-fried chicken chunks bursting with flavors of ginger, garlic, and red chillies.",
-        price: "₹450",
       },
       {
         name: "Masala Fries",
@@ -65,20 +50,9 @@ export const MENU_DATA: MenuCategory[] = [
         price: "₹550",
       },
       {
-        name: "Laal Maas",
-        description: "A fiery Rajasthani mutton curry, slow-cooked with a blend of Mathania chillies and aromatic spices.",
-        price: "₹850",
-        isHighlight: true,
-      },
-      {
-        name: "Butter Chicken",
-        description: "Tandoori chicken simmered in a luscious tomato and butter gravy, a timeless classic.",
-        price: "₹750",
-      },
-      {
-        name: "Hyderabadi Biryani",
-        description: "Fragrant basmati rice slow-cooked with your choice of vegetables or meat, infused with saffron and mint.",
-        price: "₹650 (Veg) / ₹800 (Chicken)",
+        name: "Hyderabadi Veg Biryani",
+        description: "Fragrant basmati rice slow-cooked with vegetables, infused with saffron and mint.",
+        price: "₹650",
       },
       {
         name: "Jeera Rice",

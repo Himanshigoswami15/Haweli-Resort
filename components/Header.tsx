@@ -3,6 +3,11 @@ import React from 'react';
 export const Header: React.FC = () => {
   return (
     <header className="text-center py-8 mb-8 header-ornament">
+      <img
+        src="https://i.ibb.co/6yV3c0N/image.png"
+        alt="Haweli Resort Logo"
+        className="mx-auto mb-6 w-48 h-auto"
+      />
       <h1 className="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 gold-text-shadow tracking-widest">
         HAWELI Resort
       </h1>

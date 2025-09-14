@@ -5,16 +5,6 @@ import { Quote } from './components/Quote';
 import { MENU_DATA } from './constants';
 
 const App: React.FC = () => {
-  // Helper to find category data by title for manual ordering
-  const getCategory = (title: string) => MENU_DATA.find(cat => cat.title === title);
-
-  const starters = getCategory("Starters & Snacks");
-  const fastFood = getCategory("Fast Food");
-  const mainCourse = getCategory("Main Course");
-  const breads = getCategory("Indian Breads");
-  const desserts = getCategory("Desserts & Sweets");
-  const beverages = getCategory("Beverages & Mocktails");
-
   return (
     <div 
       className="relative min-h-screen w-full"
@@ -34,17 +24,10 @@ const App: React.FC = () => {
         <main>
           <Quote text="अतिथि देवो भवः" />
 
-          {starters && <MenuSection key={starters.title} {...starters} />}
-          
-          {fastFood && <MenuSection key={fastFood.title} {...fastFood} />}
-          
-          {mainCourse && <MenuSection key={mainCourse.title} {...mainCourse} />}
-          
-          {breads && <MenuSection key={breads.title} {...breads} />}
-          
-          {desserts && <MenuSection key={desserts.title} {...desserts} />}
-          
-          {beverages && <MenuSection key={beverages.title} {...beverages} />}
+          {MENU_DATA.map((category) => (
+            <MenuSection key={category.title} {...category} />
+          ))}
+
         </main>
         <footer className="text-center py-8 mt-8">
            <p className="font-cinzel text-sm text-yellow-600/70 tracking-widest mb-6">A Royal Culinary Journey</p>

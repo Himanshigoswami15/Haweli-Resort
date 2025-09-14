@@ -42,7 +42,7 @@ const App: React.FC = () => {
       >
         {/* Background and texture layer */}
         <div 
-          className="absolute inset-0 bg-[#2b1a0e]/50 backdrop-blur-sm haweli-bg-container"
+          className="absolute inset-0 bg-[#2b1a0e]/50 backdrop-blur-sm haveli-bg-container"
           aria-hidden="true"
         />
         
@@ -90,7 +90,7 @@ const App: React.FC = () => {
                     </svg>
                 </a>
                 <a 
-                    href="mailto:info@haweliresort.com" 
+                    href="mailto:info@haveliresort.com" 
                     aria-label="Send us an email"
                     className="inline-block text-yellow-500 hover:text-yellow-300 transition-colors duration-300 transform hover:scale-110"
                 >

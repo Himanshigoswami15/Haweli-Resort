@@ -3,13 +3,8 @@ import React from 'react';
 export const Header: React.FC = () => {
   return (
     <header className="text-center py-8 mb-8 header-ornament">
-      <img
-        src="https://ik.imagekit.io/j1fgksdwx/logo.png?updatedAt=1757856706563"
-        alt="Haweli Resort Logo"
-        className="mx-auto mb-6 w-48 h-auto"
-      />
       <h1 className="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-yellow-500 gold-text-shadow tracking-widest">
-        HAWELI Resort
+        HAVELI Resort
       </h1>
       <p className="font-cinzel text-lg md:text-xl text-yellow-400/90 mt-4 tracking-widest">
         khamma ghani sa

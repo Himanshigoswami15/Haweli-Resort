@@ -3,6 +3,7 @@ import { MenuSection } from './components/MenuSection';
 import { Header } from './components/Header';
 import { Quote } from './components/Quote';
 import { Navbar } from './components/Navbar';
+import { SectionCarousel } from './components/SectionCarousel';
 import { CartFAB } from './components/CartFAB';
 import { CartProvider } from './context/CartContext';
 import { MENU_DATA } from './constants';
@@ -57,6 +58,9 @@ const App: React.FC = () => {
             
             {/* Navigation Bar */}
             <Navbar titles={sectionTitles} activeSection={activeSection} />
+
+            {/* Visual Section Scroller */}
+            <SectionCarousel categories={MENU_DATA} />
 
             {MENU_DATA.map((category) => (
               <MenuSection key={category.title} {...category} />

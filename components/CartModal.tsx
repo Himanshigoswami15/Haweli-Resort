@@ -8,16 +8,10 @@ interface CartModalProps {
 }
 
 export const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
-  const { cartItems, clearCart } = useCart();
+  const { cartItems } = useCart();
 
   const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  const handlePlaceOrder = () => {
-    alert('Thank you for your order! Our royal staff will attend to you shortly.');
-    clearCart();
-    onClose();
-  };
-  
   if (!isOpen) return null;
 
   return (
@@ -39,7 +33,7 @@ export const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
         {/* Header */}
         <header className="flex items-center justify-between p-4 border-b border-amber-800/50">
           <h2 id="cart-heading" className="font-cinzel text-2xl font-bold text-amber-300 gold-text-shadow">
-            Your Royal Order
+            Your Royal Selections
           </h2>
           <button onClick={onClose} className="text-amber-300 hover:text-white" aria-label="Close cart">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
@@ -76,12 +70,9 @@ export const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
               <span className="font-cinzel text-xl text-amber-300">Total:</span>
               <span className="font-cinzel text-2xl font-bold text-amber-200 gold-text-shadow">₹{totalPrice.toFixed(2)}</span>
             </div>
-            <button
-              onClick={handlePlaceOrder}
-              className="w-full font-cinzel text-lg font-bold bg-gradient-to-r from-yellow-500 to-amber-500 text-[#4d2d1d] py-3 rounded-md shadow-lg hover:shadow-amber-400/30 transform transition-all duration-300 hover:scale-105"
-            >
-              Place Order
-            </button>
+            <p className="text-center font-lora text-sm text-amber-200/70 mt-4">
+              Our royal staff will attend to you shortly to confirm your selections.
+            </p>
           </footer>
         )}
       </div>

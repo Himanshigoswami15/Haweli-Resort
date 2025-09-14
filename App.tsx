@@ -21,7 +21,7 @@ const App: React.FC = () => {
     >
       {/* Background and texture layer */}
       <div 
-        className="absolute inset-0 bg-[#2a1a0f]/50 backdrop-blur-sm haweli-bg-container"
+        className="absolute inset-0 bg-[#0d1526]/50 backdrop-blur-sm haweli-bg-container"
         aria-hidden="true"
       />
       

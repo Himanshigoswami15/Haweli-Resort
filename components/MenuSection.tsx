@@ -11,7 +11,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ title, items }) => {
   return (
     <section 
       id={title} 
-      className="mt-12 scroll-mt-24"
+      className="mt-12 scroll-mt-20"
       aria-labelledby={`${title}-heading`}
     >
       <h2 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MenuSection } from './components/MenuSection';
 import { Header } from './components/Header';
 import { Quote } from './components/Quote';
@@ -9,6 +9,31 @@ import { MENU_DATA } from './constants';
 
 const App: React.FC = () => {
   const sectionTitles = MENU_DATA.map(category => category.title);
+  const [activeSection, setActiveSection] = useState<string>(sectionTitles[0] || '');
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        rootMargin: '-40% 0px -60% 0px', // Trigger when the section is in the middle of the viewport
+        threshold: 0,
+      }
+    );
+
+    const sections = document.querySelectorAll('section[id]');
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
+
 
   return (
     <CartProvider>
@@ -24,14 +49,14 @@ const App: React.FC = () => {
         {/* Jharokha arch decoration layer */}
         <div className="top-jharokha-arch" aria-hidden="true" />
 
-        {/* Navigation Bar */}
-        <Navbar titles={sectionTitles} />
-
         {/* Content layer */}
         <div className="relative z-10 container mx-auto px-8 pt-40 pb-20 sm:px-12 sm:pt-48 sm:pb-24 md:px-24 md:pt-56 md:pb-32">
           <Header />
           <main>
             <Quote text="अतिथि देवो भवः" />
+            
+            {/* Navigation Bar */}
+            <Navbar titles={sectionTitles} activeSection={activeSection} />
 
             {MENU_DATA.map((category) => (
               <MenuSection key={category.title} {...category} />

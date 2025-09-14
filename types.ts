@@ -1,8 +1,7 @@
-
 export interface Dish {
   name: string;
   description: string;
-  price: string;
+  price: number;
   imageUrl?: string;
   isHighlight?: boolean;
 }
@@ -10,4 +9,8 @@ export interface Dish {
 export interface MenuCategory {
   title: string;
   items: Dish[];
+}
+
+export interface CartItem extends Dish {
+  quantity: number;
 }

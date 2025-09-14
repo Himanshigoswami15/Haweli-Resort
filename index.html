@@ -10,6 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: 'Lora', serif;
         background-image: radial-gradient(circle, #4d2d1d, #2b1a0e);
@@ -206,6 +209,31 @@
         pointer-events: none;
         z-index: 1;
         filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.25));
+      }
+
+      /* --- Navbar Horizontal Scrollbar Hiding --- */
+      .nav-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .nav-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+
+      /* --- Cart Modal Styles --- */
+      .cart-modal-overlay {
+        transition: opacity 0.3s ease-in-out;
+      }
+      .cart-modal-panel {
+        transition: transform 0.3s ease-in-out;
+      }
+      @keyframes item-added-animation {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.2) rotate(5deg); }
+        100% { transform: scale(1); }
+      }
+      .item-added {
+        animation: item-added-animation 0.4s ease-in-out;
       }
 
       /* --- Mobile Responsive Styles --- */

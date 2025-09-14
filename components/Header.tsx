@@ -4,7 +4,7 @@ export const Header: React.FC = () => {
   return (
     <header className="text-center py-8 mb-8 header-ornament">
       <img
-        src="https://i.ibb.co/6yV3c0N/image.png"
+        src="https://ik.imagekit.io/j1fgksdwx/logo.png?updatedAt=1757856706563"
         alt="Haweli Resort Logo"
         className="mx-auto mb-6 w-48 h-auto"
       />

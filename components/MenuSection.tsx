@@ -1,5 +1,6 @@
 import React from 'react';
 import { HorizontalMenuCarousel } from './HorizontalMenuCarousel';
+import { MenuItem } from './MenuItem';
 import type { Dish } from '../types';
 
 interface MenuSectionProps {
@@ -8,6 +9,8 @@ interface MenuSectionProps {
 }
 
 export const MenuSection: React.FC<MenuSectionProps> = ({ title, items }) => {
+  const isBreakfast = title === 'Breakfast';
+
   return (
     <section 
       id={title} 
@@ -21,7 +24,15 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ title, items }) => {
         {title}
       </h2>
       
-      <HorizontalMenuCarousel items={items} />
+      {isBreakfast ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+          {items.map((item) => (
+            <MenuItem key={item.name} {...item} />
+          ))}
+        </div>
+      ) : (
+        <HorizontalMenuCarousel items={items} />
+      )}
     </section>
   );
 };

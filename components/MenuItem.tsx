@@ -41,10 +41,10 @@ export const MenuItem: React.FC<Dish> = (dish) => {
             ₹{price}
           </p>
         </div>
-        <p className="font-lora text-amber-100/80 mt-1 text-base flex-grow line-clamp-2">
+        <p className="font-lora text-amber-100/80 mt-2 text-sm flex-grow line-clamp-2">
           {description}
         </p>
-        <div className="mt-2 flex justify-end">
+        <div className="mt-4 flex justify-end">
           {itemInCart ? (
             <QuantityControl item={itemInCart} />
           ) : (

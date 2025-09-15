@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MenuSection } from './components/MenuSection';
 import { Header } from './components/Header';
-import { Quote } from './components/Quote';
 import { Navbar } from './components/Navbar';
 import { CartFAB } from './components/CartFAB';
 import { CartProvider } from './context/CartContext';
@@ -53,8 +52,6 @@ const App: React.FC = () => {
         <div className="relative z-10 container mx-auto menu-frame px-8 pt-40 pb-20 sm:px-12 sm:pt-48 sm:pb-24 md:px-24 md:pt-56 md:pb-32">
           <Header />
           <main>
-            <Quote text="अतिथि देवो भवः" />
-            
             {/* Navigation Bar */}
             <Navbar titles={sectionTitles} activeSection={activeSection} />
 

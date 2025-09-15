@@ -296,7 +296,7 @@ export const MENU_DATA: MenuCategory[] = [
         name: "Hakka Noodles",
         description: "Noodles with mild flavours are stir-fried with veggies and seasonings.",
         price: 225,
-        imageUrl: "https://i.ytimg.com/vi/4OdXxGyAltI/hqdefault.jpg"
+        imageUrl: "https://amandacooksandstyles.com/wp-content/uploads/2020/11/20201108_122620-2-937x1024.jpg"
       },
       {
         name: "Chilli Garlic Noodles",

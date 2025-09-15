@@ -194,21 +194,22 @@
         letter-spacing: 0.5px;
       }
 
-      /* --- Jharokha Top Arch Decoration --- */
+      /* --- Jharokha Top Arch Decoration (Updated) --- */
       .top-jharokha-arch {
         position: absolute;
         top: 0;
-        left: 0;
-        right: 0;
-        width: 100%;
-        height: 350px;
-        background-image: url('https://storage.googleapis.com/aistudio-hosting/jharokha-top-arch-golden.png');
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105%;
+        max-width: 1300px;
+        height: 150px;
+        background-image: url('https://storage.googleapis.com/aistudio-hosting/haveli-top-frame-decoration.png');
         background-size: contain;
         background-position: top center;
         background-repeat: no-repeat;
         pointer-events: none;
-        z-index: 1;
-        filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.25));
+        z-index: 2; /* Needs to be above the frame content */
+        filter: drop-shadow(0 6px 20px rgba(212, 175, 55, 0.3));
       }
       
       /* --- Jharokha Side Shadows --- */
@@ -224,7 +225,7 @@
         background-repeat: no-repeat;
         background-position: center;
         opacity: 0.12; /* Slightly increased opacity */
-        z-index: 2;
+        z-index: 0; /* Behind menu frame */
         pointer-events: none;
         mix-blend-mode: overlay;
         transition: opacity 0.5s ease;
@@ -283,6 +284,20 @@
         border-radius: 2px;
       }
 
+      /* --- New Menu Frame --- */
+      @media (min-width: 1024px) {
+        .menu-frame {
+          background: #3c2415;
+          border-radius: 1rem;
+          /* Outer dark border */
+          border: 2px solid #5a3d2b;
+          /* Inner golden "border" using inset shadow */
+          box-shadow: 0 10px 35px rgba(0,0,0,0.6), inset 0 0 0 4px #D4AF37;
+          margin-top: 4rem;
+          margin-bottom: 4rem;
+        }
+      }
+
       /* --- Responsive Styles --- */
       @media (max-width: 1024px) {
         body::before,
@@ -293,7 +308,7 @@
 
       @media (max-width: 640px) {
         .top-jharokha-arch {
-          height: 200px;
+          height: 100px;
         }
         .header-ornament::before {
           width: 60px;

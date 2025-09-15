@@ -50,7 +50,7 @@ const App: React.FC = () => {
         <div className="top-jharokha-arch" aria-hidden="true" />
 
         {/* Content layer */}
-        <div className="relative z-10 container mx-auto px-8 pt-40 pb-20 sm:px-12 sm:pt-48 sm:pb-24 md:px-24 md:pt-56 md:pb-32">
+        <div className="relative z-10 container mx-auto menu-frame px-8 pt-40 pb-20 sm:px-12 sm:pt-48 sm:pb-24 md:px-24 md:pt-56 md:pb-32">
           <Header />
           <main>
             <Quote text="अतिथि देवो भवः" />

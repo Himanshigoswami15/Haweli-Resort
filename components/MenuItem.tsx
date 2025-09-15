@@ -28,11 +28,11 @@ export const MenuItem: React.FC<Dish> = (dish) => {
   return (
     <div className={cardClasses}>
       {imageUrl && (
-        <div className="relative w-full aspect-video">
+        <div className="relative w-full aspect-[3/1]">
           <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
         </div>
       )}
-      <div className="p-6 flex-grow flex flex-col menu-card-hover-effect">
+      <div className="p-4 flex-grow flex flex-col menu-card-hover-effect">
         <div className="flex justify-between items-start gap-4">
           <h3 className="font-cinzel text-xl font-bold text-amber-300 gold-text-shadow flex-1">
             {name}
@@ -41,10 +41,10 @@ export const MenuItem: React.FC<Dish> = (dish) => {
             ₹{price}
           </p>
         </div>
-        <p className="font-lora text-amber-100/80 mt-2 text-base flex-grow">
+        <p className="font-lora text-amber-100/80 mt-1 text-base flex-grow line-clamp-2">
           {description}
         </p>
-        <div className="mt-4 flex justify-end">
+        <div className="mt-2 flex justify-end">
           {itemInCart ? (
             <QuantityControl item={itemInCart} />
           ) : (

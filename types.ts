@@ -8,6 +8,7 @@ export interface Dish {
 
 export interface MenuCategory {
   title: string;
+  description?: string;
   items: Dish[];
 }
 

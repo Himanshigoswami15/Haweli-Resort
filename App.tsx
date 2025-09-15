@@ -49,7 +49,7 @@ const App: React.FC = () => {
         <div className="top-jharokha-arch" aria-hidden="true" />
 
         {/* Content layer */}
-        <div className="relative z-10 container mx-auto menu-frame px-8 pt-40 pb-20 sm:px-12 sm:pt-48 sm:pb-24 md:px-24 md:pt-56 md:pb-32">
+        <div className="relative z-10 max-w-screen-xl mx-auto menu-frame px-8 pt-28 pb-20 sm:px-12 sm:pt-40 sm:pb-24 md:px-24 md:pt-40 md:pb-32">
           <Header />
           <main>
             {/* Navigation Bar */}
@@ -87,7 +87,28 @@ const App: React.FC = () => {
                     </svg>
                 </a>
                 <a 
-                    href="mailto:info@haveliresort.com" 
+                    href="https://www.facebook.com/thehaveliresortbarmer" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="Follow us on Facebook"
+                    className="inline-block text-yellow-500 hover:text-yellow-300 transition-colors duration-300 transform hover:scale-110"
+                >
+                    <svg 
+                        xmlns="http://www.w3.org/2000/svg" 
+                        width="32" 
+                        height="32" 
+                        viewBox="0 0 24 24" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        strokeWidth="2" 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                    >
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                    </svg>
+                </a>
+                <a 
+                    href="mailto:info@thehaveliresorts.com" 
                     aria-label="Send us an email"
                     className="inline-block text-yellow-500 hover:text-yellow-300 transition-colors duration-300 transform hover:scale-110"
                 >

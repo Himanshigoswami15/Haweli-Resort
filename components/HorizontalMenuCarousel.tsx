@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import { MenuItem } from './MenuItem';
 import type { Dish } from '../types';
 
@@ -8,24 +8,47 @@ interface HorizontalMenuCarouselProps {
 
 export const HorizontalMenuCarousel: React.FC<HorizontalMenuCarouselProps> = ({ items }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isScrollable, setIsScrollable] = useState(false);
+  const [thumbStyle, setThumbStyle] = useState<{ width: string, left: string }>({ width: '0%', left: '0%' });
 
-  const scroll = (scrollOffset: number) => {
-    if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: scrollOffset, behavior: 'smooth' });
+  const updateScrollIndicator = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      const { scrollWidth, clientWidth, scrollLeft } = el;
+      const hasOverflow = scrollWidth > clientWidth;
+      setIsScrollable(hasOverflow);
+
+      if (hasOverflow) {
+        const thumbWidth = (clientWidth / scrollWidth) * 100;
+        const thumbPosition = (scrollLeft / scrollWidth) * 100;
+        
+        setThumbStyle({
+          width: `${thumbWidth}%`,
+          left: `${thumbPosition}%`,
+        });
+      }
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      // Defer the initial check to ensure layout is complete
+      const timeoutId = setTimeout(updateScrollIndicator, 150);
+      
+      el.addEventListener('scroll', updateScrollIndicator, { passive: true });
+      window.addEventListener('resize', updateScrollIndicator);
+
+      return () => {
+        clearTimeout(timeoutId);
+        el.removeEventListener('scroll', updateScrollIndicator);
+        window.removeEventListener('resize', updateScrollIndicator);
+      };
+    }
+  }, [items, updateScrollIndicator]);
 
   return (
     <div className="relative">
-      {/* Left Scroll Button */}
-      <button 
-        onClick={() => scroll(-300)} 
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-black/30 backdrop-blur-sm text-amber-300 hover:bg-black/50 transition-all duration-300"
-        aria-label="Scroll left"
-      >
-        &#x276E;
-      </button>
-
       <div 
         ref={scrollContainerRef}
         className="flex gap-8 overflow-x-auto snap-x snap-mandatory py-4 px-2 nav-scrollbar"
@@ -37,14 +60,11 @@ export const HorizontalMenuCarousel: React.FC<HorizontalMenuCarouselProps> = ({ 
         ))}
       </div>
 
-      {/* Right Scroll Button */}
-       <button 
-        onClick={() => scroll(300)} 
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-center w-12 h-12 rounded-full bg-black/30 backdrop-blur-sm text-amber-300 hover:bg-black/50 transition-all duration-300"
-        aria-label="Scroll right"
-      >
-        &#x276F;
-      </button>
+      {isScrollable && (
+        <div className="carousel-scrollbar-track" aria-hidden="true">
+          <div className="carousel-scrollbar-thumb" style={thumbStyle}></div>
+        </div>
+      )}
     </div>
   );
 };

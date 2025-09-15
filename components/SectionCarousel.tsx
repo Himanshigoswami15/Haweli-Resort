@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import type { MenuCategory } from '../types';
 
 interface SectionCarouselProps {
@@ -6,9 +6,51 @@ interface SectionCarouselProps {
 }
 
 export const SectionCarousel: React.FC<SectionCarouselProps> = ({ categories }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [isScrollable, setIsScrollable] = useState(false);
+  const [thumbStyle, setThumbStyle] = useState<{ width: string, left: string }>({ width: '0%', left: '0%' });
+
+  const updateScrollIndicator = useCallback(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      const { scrollWidth, clientWidth, scrollLeft } = el;
+      const hasOverflow = scrollWidth > clientWidth;
+      setIsScrollable(hasOverflow);
+
+      if (hasOverflow) {
+        const thumbWidth = (clientWidth / scrollWidth) * 100;
+        const thumbPosition = (scrollLeft / scrollWidth) * 100;
+        
+        setThumbStyle({
+          width: `${thumbWidth}%`,
+          left: `${thumbPosition}%`,
+        });
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const el = scrollContainerRef.current;
+    if (el) {
+      const timeoutId = setTimeout(updateScrollIndicator, 150);
+      
+      el.addEventListener('scroll', updateScrollIndicator, { passive: true });
+      window.addEventListener('resize', updateScrollIndicator);
+
+      return () => {
+        clearTimeout(timeoutId);
+        el.removeEventListener('scroll', updateScrollIndicator);
+        window.removeEventListener('resize', updateScrollIndicator);
+      };
+    }
+  }, [categories, updateScrollIndicator]);
+
   return (
-    <div className="mb-12">
-      <div className="flex gap-4 overflow-x-auto pb-4 nav-scrollbar">
+    <div className="relative mb-12">
+      <div 
+        ref={scrollContainerRef}
+        className="flex gap-4 overflow-x-auto pb-4 nav-scrollbar"
+      >
         {categories.map((category) => (
           <a
             key={category.title}
@@ -33,6 +75,12 @@ export const SectionCarousel: React.FC<SectionCarouselProps> = ({ categories }) 
           </a>
         ))}
       </div>
+
+      {isScrollable && (
+        <div className="carousel-scrollbar-track" aria-hidden="true">
+          <div className="carousel-scrollbar-thumb" style={thumbStyle}></div>
+        </div>
+      )}
     </div>
   );
 };

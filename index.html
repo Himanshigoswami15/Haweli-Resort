@@ -163,9 +163,9 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-image: url('https://www.transparenttextures.com/patterns/damask.png');
+        background-image: url('https://www.transparenttextures.com/patterns/arabesque.png'); /* New royal pattern */
         background-repeat: repeat;
-        opacity: 0.06;
+        opacity: 0.08; /* Increased opacity to make pattern more visible */
         mix-blend-mode: overlay;
         pointer-events: none;
         z-index: 0;
@@ -210,6 +210,34 @@
         z-index: 1;
         filter: drop-shadow(0 4px 15px rgba(212, 175, 55, 0.25));
       }
+      
+      /* --- Jharokha Side Shadows --- */
+      body::before,
+      body::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        width: 300px; /* Increased width for the more detailed design */
+        background-image: url('https://storage.googleapis.com/aistudio-hosting/ornate-jharokha-side-shadow.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.12; /* Slightly increased opacity */
+        z-index: 2;
+        pointer-events: none;
+        mix-blend-mode: overlay;
+        transition: opacity 0.5s ease;
+      }
+
+      body::before {
+        left: 0;
+      }
+
+      body::after {
+        right: 0;
+        transform: scaleX(-1);
+      }
 
       /* --- Navbar Horizontal Scrollbar Hiding --- */
       .nav-scrollbar::-webkit-scrollbar {
@@ -236,7 +264,33 @@
         animation: item-added-animation 0.4s ease-in-out;
       }
 
-      /* --- Mobile Responsive Styles --- */
+      /* --- Carousel Custom Scrollbar --- */
+      .carousel-scrollbar-track {
+        position: relative;
+        width: 90%;
+        max-width: 300px;
+        margin: 12px auto 0;
+        height: 3px;
+        background: rgba(212, 175, 55, 0.15);
+        border-radius: 2px;
+      }
+
+      .carousel-scrollbar-thumb {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        background-color: #D4AF37;
+        border-radius: 2px;
+      }
+
+      /* --- Responsive Styles --- */
+      @media (max-width: 1024px) {
+        body::before,
+        body::after {
+          display: none;
+        }
+      }
+
       @media (max-width: 640px) {
         .top-jharokha-arch {
           height: 200px;

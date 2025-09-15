@@ -51,6 +51,22 @@
         transform: translateY(-50%) scaleX(-1);
       }
       
+      /* --- New Header Crown Ornament --- */
+      .header-crown-ornament {
+        position: absolute;
+        bottom: 90%; /* Position above the h1 */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 60px;
+        background-image: url('https://storage.googleapis.com/aistudio-hosting/haveli-header-crown-ornament.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        opacity: 0.8;
+        filter: drop-shadow(0 2px 5px rgba(212, 175, 55, 0.4));
+      }
+
       /* --- Enhanced Section Ornament --- */
       .ornament-border {
         position: relative;
@@ -317,6 +333,10 @@
         .header-ornament::after {
           width: 60px;
           right: 2%;
+        }
+        .header-crown-ornament {
+          width: 90px;
+          height: 45px;
         }
         .ornament-border::before {
           font-size: 1.2rem;

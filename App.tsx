@@ -37,7 +37,7 @@ const App: React.FC = () => {
   return (
     <CartProvider>
       <div 
-        className="relative min-h-screen w-full"
+        className="relative min-h-screen w-full overflow-x-hidden"
       >
         {/* Background and texture layer */}
         <div 

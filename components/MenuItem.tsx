@@ -29,7 +29,7 @@ export const MenuItem: React.FC<Dish> = (dish) => {
     <div className={cardClasses}>
       {imageUrl && (
         <div className="relative w-full aspect-[3/1]">
-          <img src={imageUrl} alt={name} className="w-full h-full object-cover" />
+          <img src={imageUrl} alt={name} className="w-full h-full object-cover" crossOrigin="anonymous" referrerPolicy="no-referrer" />
         </div>
       )}
       <div className="p-4 flex-grow flex flex-col menu-card-hover-effect">

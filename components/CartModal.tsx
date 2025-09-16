@@ -51,7 +51,7 @@ export const CartModal: React.FC<CartModalProps> = ({ isOpen, onClose }) => {
             <ul className="space-y-4">
               {cartItems.map(item => (
                 <li key={item.name} className="flex items-center gap-4 p-2 bg-black/20 rounded-md">
-                  <img src={item.imageUrl} alt={item.name} className="w-16 h-16 rounded-md object-cover"/>
+                  <img src={item.imageUrl} alt={item.name} className="w-16 h-16 rounded-md object-cover" crossOrigin="anonymous" referrerPolicy="no-referrer"/>
                   <div className="flex-grow">
                     <p className="font-cinzel text-amber-300 font-semibold">{item.name}</p>
                     <p className="text-sm text-amber-200">₹{item.price}</p>

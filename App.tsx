@@ -50,7 +50,9 @@ const App: React.FC = () => {
       setActiveSection(sectionId);
       
       const navbarHeight = navRef.current.offsetHeight;
-      const topPosition = section.offsetTop - navbarHeight - 24; // 24px extra padding
+      // Use getBoundingClientRect for a more accurate position relative to the document
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const topPosition = sectionTop - navbarHeight - 24; // 24px extra padding
 
       window.scrollTo({
         top: topPosition,

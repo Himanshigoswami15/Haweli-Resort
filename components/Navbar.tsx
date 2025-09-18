@@ -3,9 +3,10 @@ import React, { useEffect, useRef } from 'react';
 interface NavbarProps {
   titles: string[];
   activeSection: string;
+  onNavClick: (sectionId: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ titles, activeSection }) => {
+export const Navbar: React.FC<NavbarProps> = ({ titles, activeSection, onNavClick }) => {
   const navContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -16,6 +17,11 @@ export const Navbar: React.FC<NavbarProps> = ({ titles, activeSection }) => {
       }
     }
   }, [activeSection]);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, title: string) => {
+    e.preventDefault();
+    onNavClick(title);
+  };
 
   return (
     <nav 
@@ -30,6 +36,7 @@ export const Navbar: React.FC<NavbarProps> = ({ titles, activeSection }) => {
                 <a
                   key={title}
                   href={`#${title}`}
+                  onClick={(e) => handleClick(e, title)}
                   className={`relative font-cinzel text-base font-semibold transition-all duration-300 tracking-wider transform px-4 py-2 ${
                     isActive
                       ? 'text-yellow-300 scale-110'

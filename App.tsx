@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { MenuSection } from './components/MenuSection';
 import { Header } from './components/Header';
 import { Navbar } from './components/Navbar';
@@ -9,10 +9,16 @@ import { MENU_DATA } from './constants';
 const App: React.FC = () => {
   const sectionTitles = MENU_DATA.map(category => category.title);
   const [activeSection, setActiveSection] = useState<string>(sectionTitles[0] || '');
+  const isClickScrolling = useRef(false);
+  const scrollTimeout = useRef<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        if (isClickScrolling.current) {
+          return;
+        }
+        
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
@@ -30,8 +36,29 @@ const App: React.FC = () => {
 
     return () => {
       sections.forEach((section) => observer.unobserve(section));
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
     };
   }, []);
+
+  const handleNavClick = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      isClickScrolling.current = true;
+      setActiveSection(sectionId);
+      
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      if (scrollTimeout.current) {
+        clearTimeout(scrollTimeout.current);
+      }
+
+      scrollTimeout.current = window.setTimeout(() => {
+        isClickScrolling.current = false;
+      }, 1000); // Wait for scroll to finish
+    }
+  };
 
 
   return (
@@ -53,7 +80,7 @@ const App: React.FC = () => {
           <Header />
           <main>
             {/* Navigation Bar */}
-            <Navbar titles={sectionTitles} activeSection={activeSection} />
+            <Navbar titles={sectionTitles} activeSection={activeSection} onNavClick={handleNavClick} />
 
             {MENU_DATA.map((category) => (
               <MenuSection key={category.title} {...category} />

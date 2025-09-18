@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, forwardRef } from 'react';
 
 interface NavbarProps {
   titles: string[];
@@ -6,7 +6,7 @@ interface NavbarProps {
   onNavClick: (sectionId: string) => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ titles, activeSection, onNavClick }) => {
+export const Navbar = forwardRef<HTMLElement, NavbarProps>(({ titles, activeSection, onNavClick }, ref) => {
   const navContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,6 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ titles, activeSection, onNavClic
 
   return (
     <nav 
+      ref={ref}
       className="sticky top-0 z-40 bg-gradient-to-b from-[#3c2415] to-[#2b1a0e]/90 backdrop-blur-md shadow-lg shadow-black/30 border-y border-amber-800/50 my-12"
       aria-label="Menu Sections"
     >
@@ -54,4 +55,6 @@ export const Navbar: React.FC<NavbarProps> = ({ titles, activeSection, onNavClic
       </div>
     </nav>
   );
-};
+});
+
+Navbar.displayName = 'Navbar';

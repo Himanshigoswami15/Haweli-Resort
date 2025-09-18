@@ -11,6 +11,7 @@ const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<string>(sectionTitles[0] || '');
   const isClickScrolling = useRef(false);
   const scrollTimeout = useRef<number | null>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -44,11 +45,17 @@ const App: React.FC = () => {
 
   const handleNavClick = (sectionId: string) => {
     const section = document.getElementById(sectionId);
-    if (section) {
+    if (section && navRef.current) {
       isClickScrolling.current = true;
       setActiveSection(sectionId);
       
-      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const navbarHeight = navRef.current.offsetHeight;
+      const topPosition = section.offsetTop - navbarHeight - 24; // 24px extra padding
+
+      window.scrollTo({
+        top: topPosition,
+        behavior: 'smooth',
+      });
 
       if (scrollTimeout.current) {
         clearTimeout(scrollTimeout.current);
@@ -80,7 +87,7 @@ const App: React.FC = () => {
           <Header />
           <main>
             {/* Navigation Bar */}
-            <Navbar titles={sectionTitles} activeSection={activeSection} onNavClick={handleNavClick} />
+            <Navbar ref={navRef} titles={sectionTitles} activeSection={activeSection} onNavClick={handleNavClick} />
 
             {MENU_DATA.map((category) => (
               <MenuSection key={category.title} {...category} />

@@ -12,7 +12,7 @@ export const MenuSection: React.FC<MenuSectionProps> = ({ title, items, descript
   return (
     <section 
       id={title} 
-      className="mt-12 scroll-mt-28"
+      className="mt-12"
       aria-labelledby={`${title}-heading`}
     >
       <div className="mb-8 text-center ornament-border">

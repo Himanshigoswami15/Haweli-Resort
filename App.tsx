@@ -10,8 +10,34 @@ const App: React.FC = () => {
   const sectionTitles = MENU_DATA.map(category => category.title);
   const [activeSection, setActiveSection] = useState<string>(sectionTitles[0] || '');
   const isClickScrolling = useRef(false);
-  const scrollTimeout = useRef<number | null>(null);
   const navRef = useRef<HTMLElement>(null);
+
+  // This effect manages re-enabling the observer after a programmatic scroll has finished.
+  useEffect(() => {
+    let scrollEndTimer: number | null = null;
+
+    const handleScroll = () => {
+      // If a click-initiated scroll is in progress, set a timeout to reset the flag once scrolling stops.
+      if (isClickScrolling.current) {
+        if (scrollEndTimer) {
+          clearTimeout(scrollEndTimer);
+        }
+
+        scrollEndTimer = window.setTimeout(() => {
+          isClickScrolling.current = false;
+        }, 150); // Small delay to confirm scrolling has stopped
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollEndTimer) {
+        clearTimeout(scrollEndTimer);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -37,9 +63,6 @@ const App: React.FC = () => {
 
     return () => {
       sections.forEach((section) => observer.unobserve(section));
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
     };
   }, []);
 
@@ -50,7 +73,6 @@ const App: React.FC = () => {
       setActiveSection(sectionId);
       
       const navbarHeight = navRef.current.offsetHeight;
-      // Use getBoundingClientRect for a more accurate position relative to the document
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       const topPosition = sectionTop - navbarHeight - 24; // 24px extra padding
 
@@ -58,14 +80,6 @@ const App: React.FC = () => {
         top: topPosition,
         behavior: 'smooth',
       });
-
-      if (scrollTimeout.current) {
-        clearTimeout(scrollTimeout.current);
-      }
-
-      scrollTimeout.current = window.setTimeout(() => {
-        isClickScrolling.current = false;
-      }, 1000); // Wait for scroll to finish
     }
   };
 

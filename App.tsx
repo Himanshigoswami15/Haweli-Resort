@@ -5,12 +5,34 @@ import { Navbar } from './components/Navbar';
 import { CartFAB } from './components/CartFAB';
 import { CartProvider } from './context/CartContext';
 import { MENU_DATA } from './constants';
+import { SearchBar } from './components/SearchBar';
 
 const App: React.FC = () => {
-  const sectionTitles = MENU_DATA.map(category => category.title);
-  const [activeSection, setActiveSection] = useState<string>(sectionTitles[0] || '');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const filteredMenuData = searchQuery
+    ? MENU_DATA.map(category => ({
+        ...category,
+        items: category.items.filter(item =>
+          item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          item.description.toLowerCase().includes(searchQuery.toLowerCase())
+        ),
+      })).filter(category => category.items.length > 0)
+    : MENU_DATA;
+    
+  const sectionTitles = filteredMenuData.map(category => category.title);
+
+  const [activeSection, setActiveSection] = useState<string>(MENU_DATA[0]?.title || '');
   const isClickScrolling = useRef(false);
   const navRef = useRef<HTMLElement>(null);
+
+  // This effect corrects the activeSection if it becomes invalid after a search
+  useEffect(() => {
+    if (!sectionTitles.includes(activeSection)) {
+      setActiveSection(sectionTitles[0] || '');
+    }
+  }, [sectionTitles]);
+
 
   // This effect manages re-enabling the observer after a programmatic scroll has finished.
   useEffect(() => {
@@ -64,7 +86,7 @@ const App: React.FC = () => {
     return () => {
       sections.forEach((section) => observer.unobserve(section));
     };
-  }, []);
+  }, [filteredMenuData]); // Re-run observer setup when filtered data changes
 
   const handleNavClick = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -102,12 +124,26 @@ const App: React.FC = () => {
         <div className="relative z-10 max-w-screen-xl mx-auto menu-frame px-8 pt-28 pb-20 sm:px-12 sm:pt-40 sm:pb-24 md:px-24 md:pt-40 md:pb-32">
           <Header />
           <main>
+            <SearchBar value={searchQuery} onChange={setSearchQuery} />
+
             {/* Navigation Bar */}
             <Navbar ref={navRef} titles={sectionTitles} activeSection={activeSection} onNavClick={handleNavClick} />
-
-            {MENU_DATA.map((category) => (
-              <MenuSection key={category.title} {...category} />
-            ))}
+            
+            {filteredMenuData.length > 0 ? (
+              filteredMenuData.map((category) => (
+                <MenuSection key={category.title} {...category} />
+              ))
+            ) : (
+              <div className="text-center py-20 px-4">
+                <h3 className="font-cinzel text-2xl font-bold text-yellow-400 gold-text-shadow">No Delicacies Found</h3>
+                <p className="font-lora text-amber-200/80 mt-2 text-base">
+                  Your search for "{searchQuery}" did not match any of our royal dishes.
+                </p>
+                <p className="font-lora text-amber-200/60 mt-1 text-sm italic">
+                  Try a different keyword or clear the search to view the full menu.
+                </p>
+              </div>
+            )}
 
           </main>
           <footer className="text-center py-8 mt-8">
